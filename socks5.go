@@ -51,10 +51,11 @@ func WriteUdpAddr(w io.Writer, addr Address) error {
 		if len(addr.Name) > 255 {
 			return errors.New("errStringTooLong")
 		}
-		con := make([]byte, 2+len(addr.Name))
+		con := make([]byte, 4+len(addr.Name))
 		con[0] = fqdnAddress
 		con[1] = byte(len(addr.Name))
 		copy(con[2:], []byte(addr.Name))
+		binary.BigEndian.PutUint16(con[2+len(addr.Name):], uint16(addr.Port))
 		_, err := w.Write(con)
 		return err
 	} else {
