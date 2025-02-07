@@ -12,10 +12,10 @@ import (
 	"net/http"
 
 	"github.com/gospider007/gtls"
-	"github.com/gospider007/http2"
 	"github.com/gospider007/http3"
 	"github.com/gospider007/ja3"
 	"github.com/gospider007/tools"
+	"github.com/luoxk/http2"
 	"github.com/quic-go/quic-go"
 	uquic "github.com/refraction-networking/uquic"
 )
